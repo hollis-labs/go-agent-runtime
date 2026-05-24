@@ -49,6 +49,13 @@ Callers that intentionally host a generic subprocess adapter must set
 `AllowGenericSubprocess`; this keeps accidental provider typos from silently
 launching in the wrong runtime.
 
+`bootdir.Writer` owns the mechanical boot directory write lifecycle for apps
+that render their own content: full `agentlaunch.InjectionSpec`
+populate/re-populate, slot-only `WriteFiles`, deterministic dry-run planning,
+default atomic writes, an atomic writer hook, sorted overlay-wins-last ordering,
+and sentinel errors for unsafe paths, unsupported native file kinds, empty boot
+dirs, and empty relative paths.
+
 ## Install
 
 ```sh
