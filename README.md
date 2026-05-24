@@ -13,7 +13,7 @@ import without sharing an application process.
 |---|---|
 | `runtimekind` | Runtime-kind vocabulary and compatibility aliases: `api`, `subprocess`, `streaming-stdio`, `jsonrpc-stdio`, `serve-http`, `pty`, `pty-debug`, `unknown`. |
 | `runtimebind` | Provider/runtime binding defaults, explicit generic-subprocess opt-in, app override hooks, and shared Codex headless policy shape. |
-| `turn` | Runtime-aware user turn framing. Claude streaming-stdio emits pinned NDJSON, jsonrpc-stdio can use typed calls, subprocess/API/PTY stay raw. `SendTurn` is the public abstraction; provider-specific JSON-RPC methods remain adapter/binding details. |
+| `turn` | Runtime-aware user turn framing. Claude streaming-stdio emits pinned NDJSON; Codex app-server has a shared JSON-RPC protocol helper; serve-http/subprocess/API/PTY stay raw through `SendInput`. `SendTurn` is the public abstraction; provider-specific JSON-RPC methods remain adapter/binding details. |
 | `sessionkit` | First-turn policy projection onto `go-agent-sessions.StartOptions` without owning session rows. |
 | `bootdir` | App-owned native file/task/overlay helpers with the shared path-safety boundary. |
 | `loopback` | Provider-neutral MCP loopback descriptors for subprocess, HTTP/SSE, and mux proxy entries. |
@@ -55,6 +55,12 @@ populate/re-populate, slot-only `WriteFiles`, deterministic dry-run planning,
 default atomic writes, an atomic writer hook, sorted overlay-wins-last ordering,
 and sentinel errors for unsafe paths, unsupported native file kinds, empty boot
 dirs, and empty relative paths.
+
+`turn.CodexAppServerSession` and `turn.CodexAppServerCache` own the repeated
+Codex JSON-RPC app-server protocol shared by Torque and Tether: lazy
+`initialize`, lazy `thread/start` with optional `cwd`, cached `thread.id`, and
+per-turn `turn/start` with text input blocks. Apps still own how they look up
+the work root and how they observe `turn/completed` notifications.
 
 ## Install
 
