@@ -13,7 +13,7 @@ import without sharing an application process.
 |---|---|
 | `runtimekind` | Runtime-kind vocabulary and compatibility aliases: `api`, `subprocess`, `streaming-stdio`, `jsonrpc-stdio`, `serve-http`, `pty`, `pty-debug`, `unknown`. |
 | `runtimebind` | Provider/runtime binding defaults, explicit generic-subprocess opt-in, app override hooks, and shared Codex headless policy shape. |
-| `turn` | Runtime-aware user turn framing. Claude streaming-stdio emits pinned NDJSON; Codex app-server has a shared JSON-RPC protocol helper; serve-http/subprocess/API/PTY stay raw through `SendInput`. `SendTurn` is the public abstraction; provider-specific JSON-RPC methods remain adapter/binding details. |
+| `turn` | Runtime-aware user turn framing. Claude streaming-stdio emits pinned NDJSON; Codex app-server has shared JSON-RPC protocol and notification parsing helpers; serve-http/subprocess/API/PTY stay raw through `SendInput`. `SendTurn` is the public abstraction; provider-specific JSON-RPC methods remain adapter/binding details. |
 | `sessionkit` | First-turn policy projection onto `go-agent-sessions.StartOptions` without owning session rows. |
 | `bootdir` | App-owned native file/task/overlay helpers with the shared path-safety boundary. |
 | `loopback` | Provider-neutral MCP loopback descriptors for subprocess, HTTP/SSE, and mux proxy entries. Can render subprocess descriptors into Claude/Codex/Opencode-compatible `.mcp.json`; apps still own descriptor creation and policy. |
@@ -59,8 +59,10 @@ dirs, and empty relative paths.
 `turn.CodexAppServerSession` and `turn.CodexAppServerCache` own the repeated
 Codex JSON-RPC app-server protocol shared by Torque and Tether: lazy
 `initialize`, lazy `thread/start` with optional `cwd`, cached `thread.id`, and
-per-turn `turn/start` with text input blocks. Apps still own how they look up
-the work root and how they observe `turn/completed` notifications.
+per-turn `turn/start` with text input blocks. `turn` also exposes
+provider-neutral Codex notification parsers for `turn/completed`,
+`item/completed`, and cumulative `thread/tokenUsage/updated` params; apps still
+own how they map those parsed values into product event streams.
 
 ## Install
 
