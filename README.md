@@ -16,7 +16,7 @@ import without sharing an application process.
 | `turn` | Runtime-aware user turn framing. Claude streaming-stdio emits pinned NDJSON; Codex app-server has a shared JSON-RPC protocol helper; serve-http/subprocess/API/PTY stay raw through `SendInput`. `SendTurn` is the public abstraction; provider-specific JSON-RPC methods remain adapter/binding details. |
 | `sessionkit` | First-turn policy projection onto `go-agent-sessions.StartOptions` without owning session rows. |
 | `bootdir` | App-owned native file/task/overlay helpers with the shared path-safety boundary. |
-| `loopback` | Provider-neutral MCP loopback descriptors for subprocess, HTTP/SSE, and mux proxy entries. |
+| `loopback` | Provider-neutral MCP loopback descriptors for subprocess, HTTP/SSE, and mux proxy entries. Can render subprocess descriptors into Claude/Codex/Opencode-compatible `.mcp.json`; apps still own descriptor creation and policy. |
 | `checkpoint` | Provider session ID and checkpoint/resume hint types without a shared database schema. |
 | `smoke` | Anchor for cross-package smoke fixtures; executable tests live beside the packages they protect. |
 

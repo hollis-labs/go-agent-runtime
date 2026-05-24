@@ -3,7 +3,10 @@ package loopback
 
 import "errors"
 
-var ErrInvalidDescriptor = errors.New("loopback: invalid descriptor")
+var (
+	ErrInvalidDescriptor         = errors.New("loopback: invalid descriptor")
+	ErrUnsupportedDescriptorKind = errors.New("loopback: unsupported descriptor kind")
+)
 
 type Kind string
 
