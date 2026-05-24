@@ -1,0 +1,55 @@
+folio_version: "0.1"
+generated_at: 2026-05-23T19:00:57.359716-05:00
+generator: folio/0.1.0
+presets:
+  - id: go-lib
+    version: 0.1.0
+    source: bundled
+    resolved_path: bundled:presets/go-lib
+inputs:
+  copyright_holder: Hollis Labs
+  description: Shared Go agent runtime substrate for Hollis Labs apps.
+  github_owner: hollis-labs
+  go_version: 1.26.1
+  package_name: agentruntime
+  repo_name: go-agent-runtime
+computed:
+  module_path: github.com/hollis-labs/go-agent-runtime
+  year: "2026"
+files:
+  .github/workflows/check.yml:
+    preset: go-lib
+    digest_at_gen: sha256:aac94411d0d8efc16c742a9dd048689ede1c8b84c8d6984a5d80fea09fb295d5
+  .gitignore:
+    preset: go-lib
+    digest_at_gen: sha256:1abae72d1b570e1dca6465bad43ba51f8a19bf92dd09eb9e6692d2b143282b4a
+  CHANGELOG.md:
+    preset: go-lib
+    digest_at_gen: sha256:dc84c28bb033ce23346f4cb6a58ea2073f04ccfbf3f5ab9c1d90c9709ed65b1e
+  LICENSE:
+    preset: go-lib
+    digest_at_gen: sha256:29fde794587339581b8d68aa7753337b321da45cbe49cf5a0be907db7e67e7d8
+  README.md:
+    preset: go-lib
+    digest_at_gen: sha256:aa70045076e44ab4084893410fa5b376ed06963d17fdd131dce26a9c1cd569ea
+  agentruntime/agentruntime.go:
+    preset: go-lib
+    digest_at_gen: sha256:ecf7bd5b6e94118ac650405a4f38621d9f6d598466d850f460aeff38f5ae8ab7
+  agentruntime/agentruntime_test.go:
+    preset: go-lib
+    digest_at_gen: sha256:c252661cbb7d0d20ecfabc1a5212d0337d8d27fa62a34a06da98ffcf29ffef4f
+  agentruntime/doc.go:
+    preset: go-lib
+    digest_at_gen: sha256:71258bc69d735d1be38c4fb9f8e519017800c9fb30003b05bbc98cb758968255
+  examples/README.md:
+    preset: go-lib
+    digest_at_gen: sha256:6ead0678e6f82964a0553029616eb3306ce0c99c8df26a7248255e06dd3905aa
+  go.mod:
+    preset: go-lib
+    digest_at_gen: sha256:41a34ed8db8786b9f81b0d01dcb0e2cb9258e45560aff153381c3422f1a16635
+sync_history:
+  - at: 2026-05-23T19:00:57.359716-05:00
+    operation: init
+    presets:
+      - id: go-lib
+        version: 0.1.0
