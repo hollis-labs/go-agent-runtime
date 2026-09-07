@@ -32,8 +32,9 @@ CI runs both.
 ## Boundaries
 
 This module was absorbed into `agentkit` as `agentkit/agentruntime` at agentkit
-v0.1.0 and has not changed since v0.5.0 (2026-05-23). New work belongs in
-`agentkit`.
+v0.1.0, and this repo is maintenance-only. New work belongs in `agentkit`.
+
+`CHANGELOG.md` and the git tags are the authority for what has shipped here.
 
 `turn` exists so streaming-stdio and JSON-RPC sessions never receive raw
 markdown. Claude streaming emits pinned NDJSON and Codex app-server speaks
